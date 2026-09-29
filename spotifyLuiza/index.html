@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify Clone</title>
+
+ 
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  />
+
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  
+  <div class="app-container">
+
+    
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-brands fa-spotify"></i>
+        <span>Spotify</span>
+      </div>
+
+      <nav class="nav-menu">
+        <ul>
+          <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Início</a></li>
+          <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Buscar</a></li>
+          <li><a href="#"><i class="fa-solid fa-book"></i> Sua Biblioteca</a></li>
+        </ul>
+      </nav>
+
+      <div class="playlists-nav">
+        <h3>PLAYLISTS</h3>
+        <ul>
+          <li><a href="#">Minhas Favoritas</a></li>
+          <li><a href="#">Rock Clássico</a></li>
+          <li><a href="#">Lo-Fi Beats</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      
+      
+      <header class="top-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="O que você quer ouvir?" />
+        </div>
+        <div class="user-profile">
+          <button class="user-btn"><i class="fa-regular fa-user"></i> Perfil</button>
+        </div>
+      </header>
+
+      
+      <section class="content-section">
+        <h2>Tocados recentemente</h2>
+        
+        <div class="cards-grid" id="cards-container">
+          
+          <div class="card" data-index="0">
+            <div class="cover">
+              <img src="https://via.placeholder.com/150" alt="Capa da música" class="card-img" />
+              <button class="play-btn-card"><i class="fa-solid fa-play"></i></button>
+            </div>
+            <h4>Nome da Música</h4>
+            <p>Nome do Artista</p>
+          </div>
+
+          
+          <div class="card" data-index="1">
+            <div class="cover">
+              <img src="https://via.placeholder.com/150" alt="Capa da música" class="card-img" />
+              <button class="play-btn-card"><i class="fa-solid fa-play"></i></button>
+            </div>
+            <h4>Outra Música</h4>
+            <p>Outro Artista</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+ 
+  <footer class="player">
+
+   
+    <div class="track-info">
+      <img src="https://via.placeholder.com/60" id="current-cover" alt="Capa atual" />
+      <div class="track-details">
+        <h5 id="current-title">Selecione uma música</h5>
+        <p id="current-artist">--</p>
+      </div>
+      <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+    </div>
+
+   
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button id="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
+        <button id="play-pause-btn"><i class="fa-solid fa-circle-play"></i></button>
+        <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+      </div>
+
+      <div class="progress-container">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100" />
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    
+    <div class="volume-controls">
+      <i class="fa-solid fa-volume-high"></i>
+      <input type="range" id="volume-bar" value="100" min="0" max="100" />
+    </div>
+
+  </footer>
+
+ 
+  <audio id="audio-player"></audio>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
