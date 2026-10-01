@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify Clone - Painel do Criador</title>
+
+  <!-- Font Awesome Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR (BARRA LATERAL ESQUERDA) -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-brands fa-spotify"></i>
+        <span>Spotify</span>
+      </div>
+
+      <nav class="nav-menu">
+        <ul>
+          <li id="nav-home" class="active"><a href="#"><i class="fa-solid fa-house"></i> Início</a></li>
+          <li id="nav-search"><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Buscar</a></li>
+          <!-- NOVA ABA DO CRIADOR -->
+          <li id="nav-creator"><a href="#" class="creator-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Painel do Criador</a></li>
+        </ul>
+      </nav>
+
+      <!-- BIBLIOTECA -->
+      <div class="library-section">
+        <div class="library-header">
+          <div class="library-title">
+            <i class="fa-solid fa-book"></i>
+            <span>Sua Biblioteca</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <div class="library-pills">
+          <button class="lib-pill active">Playlists</button>
+          <button class="lib-pill">Artistas</button>
+        </div>
+
+        <ul class="playlists-list">
+          <li id="nav-liked-playlist">
+            <a href="#" class="liked-nav-item">
+              <div class="small-heart-icon"><i class="fa-solid fa-heart"></i></div>
+              <div class="nav-playlist-info">
+                <span class="playlist-name">Músicas Curtidas</span>
+                <span class="playlist-sub">Playlist • Músicas</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100" class="nav-thumb" />
+              <div class="nav-playlist-info">
+                <span class="playlist-name">Rock Clássico</span>
+                <span class="playlist-sub">Playlist • Spotify</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100" class="nav-thumb" />
+              <div class="nav-playlist-info">
+                <span class="playlist-name">Lo-Fi Beats</span>
+                <span class="playlist-sub">Playlist • Spotify</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      
+      <!-- BARRA SUPERIOR -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <button class="nav-circle-btn" id="header-home-btn"><i class="fa-solid fa-house"></i></button>
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="O que você quer ouvir?" />
+          </div>
+        </div>
+        <div class="user-profile">
+          <button class="install-btn"><i class="fa-regular fa-circle-down"></i> Instalar aplicativo</button>
+          <button class="user-btn"><i class="fa-regular fa-user"></i></button>
+        </div>
+      </header>
+
+      <!-- ABA 1: INÍCIO (HOME) -->
+      <section id="home-view" class="view-section">
+        
+        <!-- Pílulas de Filtro -->
+        <div class="filter-pills">
+          <button class="pill active">Tudo</button>
+          <button class="pill">Música</button>
+          <button class="pill">Podcasts</button>
+        </div>
+
+        <!-- Grade de Acesso Rápido -->
+        <div class="quick-access-grid" id="quick-access-container"></div>
+
+        <!-- Seção: Estações Recomendadas -->
+        <div class="section-container">
+          <div class="section-header">
+            <div>
+              <h2>Estações recomendadas</h2>
+              <p class="section-subtitle">Música sem parar com base nos seus artistas e faixas que você adora.</p>
+            </div>
+            <a href="#" class="see-all">Mostrar tudo</a>
+          </div>
+          <div class="cards-grid" id="recommended-container"></div>
+        </div>
+
+        <!-- Seção: Suas músicas estão com saudade -->
+        <div class="section-container">
+          <div class="section-header">
+            <h2>Suas músicas estão com saudade</h2>
+            <a href="#" class="see-all">Mostrar tudo</a>
+          </div>
+          <div class="cards-grid" id="missed-container"></div>
+        </div>
+
+      </section>
+
+      <!-- ABA 2: PESQUISA / BUSCA -->
+      <section id="search-view" class="view-section hidden">
+        <div id="search-results-section" class="hidden">
+          <h2>Resultados da pesquisa</h2>
+          <div class="cards-grid" id="search-results-container"></div>
+        </div>
+
+        <div id="search-default-section">
+          <h2>Tocados recentemente</h2>
+          <div class="cards-grid" id="recent-search-container" style="margin-bottom: 32px;"></div>
+
+          <h2>Navegar por tudo</h2>
+          <div class="genre-grid" id="genre-grid"></div>
+        </div>
+      </section>
+
+      <!-- ABA 3: MÚSICAS CURTIDAS -->
+      <section id="liked-view" class="view-section hidden">
+        <div class="liked-header">
+          <div class="liked-cover">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="liked-info">
+            <span class="playlist-type">PLAYLIST</span>
+            <h1 class="liked-title">Músicas Curtidas</h1>
+            <div class="liked-meta">
+              <span class="user-name">Usuário</span>
+              <span class="bullet">•</span>
+              <span id="liked-count">0 músicas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="liked-actions">
+          <button class="big-play-btn" id="play-all-liked" title="Tocar Músicas Curtidas">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table class="tracks-table">
+            <thead>
+              <tr>
+                <th class="col-num">#</th>
+                <th class="col-title">Título</th>
+                <th class="col-album">Álbum</th>
+                <th class="col-like"></th>
+                <th class="col-duration"><i class="fa-regular fa-clock"></i></th>
+              </tr>
+            </thead>
+            <tbody id="liked-tracks-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ABA 4: PAINEL DO CRIADOR (SPOTIFY FOR ARTISTS) -->
+      <section id="creator-view" class="view-section hidden">
+        <div class="creator-banner">
+          <div class="creator-badge"><i class="fa-solid fa-circle-check"></i> Spotify for Artists</div>
+          <h1>Painel do Criador</h1>
+          <p>Adicione, gerencie e remova suas faixas do catálogo do Firebase em tempo real.</p>
+        </div>
+
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div class="creator-form-card">
+          <h2><i class="fa-solid fa-plus-circle"></i> Adicionar Nova Música</h2>
+          <form id="add-song-form" class="creator-form">
+            <div class="form-group">
+              <label for="song-title">Título da Música *</label>
+              <input type="text" id="song-title" placeholder="Ex: Blinding Lights" required />
+            </div>
+
+            <div class="form-group">
+              <label for="song-artist">Artista *</label>
+              <input type="text" id="song-artist" placeholder="Ex: The Weeknd" required />
+            </div>
+
+            <div class="form-group">
+              <label for="song-album">Álbum *</label>
+              <input type="text" id="song-album" placeholder="Ex: After Hours" required />
+            </div>
+
+            <div class="form-group">
+              <label for="song-duration">Duração *</label>
+              <input type="text" id="song-duration" placeholder="Ex: 3:20" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="song-cover">URL da Imagem de Capa *</label>
+              <input type="url" id="song-cover" placeholder="https://exemplo.com/imagem.jpg" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="song-src">URL do Arquivo MP3 (Áudio) *</label>
+              <input type="url" id="song-src" placeholder="https://exemplo.com/audio.mp3" required />
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Publicar Música no Firebase
+            </button>
+          </form>
+        </div>
+
+        <!-- GERENCIADOR DE MÚSICAS EXISTENTES -->
+        <div class="creator-table-card">
+          <h2><i class="fa-solid fa-list-music"></i> Músicas Cadastradas (<span id="creator-songs-count">0</span>)</h2>
+          <div class="table-container">
+            <table class="tracks-table">
+              <thead>
+                <tr>
+                  <th class="col-num">#</th>
+                  <th class="col-title">Faixa</th>
+                  <th class="col-album">Álbum</th>
+                  <th class="col-duration">Duração</th>
+                  <th class="col-action" style="text-align: right; padding-right: 20px;">Ação</th>
+                </tr>
+              </thead>
+              <tbody id="creator-songs-body">
+                <!-- Preenchido via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- PLAYER INFERIOR -->
+  <footer class="player">
+    <div class="track-info">
+      <img src="https://via.placeholder.com/60" id="current-cover" alt="Capa atual" />
+      <div class="track-details">
+        <h5 id="current-title">Selecione uma música</h5>
+        <p id="current-artist">--</p>
+      </div>
+      <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+    </div>
+
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button id="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
+        <button id="play-pause-btn"><i class="fa-solid fa-circle-play"></i></button>
+        <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+      </div>
+
+      <div class="progress-container">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" value="0" min="0" max="100" />
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume-controls">
+      <i class="fa-solid fa-volume-high"></i>
+      <input type="range" id="volume-bar" value="100" min="0" max="100" />
+    </div>
+  </footer>
+
+  <audio id="audio-player"></audio>
+
+  <!-- FIREBASE (CDN) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
