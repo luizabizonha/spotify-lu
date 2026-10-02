@@ -1,0 +1,18 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBVog0YjZEzCUiaUDrdOrIVuk9Cv7_82Cs",
+  authDomain: "spotify-lu.firebaseapp.com",
+  databaseURL: "https://spotify-lu-default-rtdb.firebaseio.com",
+  projectId: "spotify-lu",
+  storageBucket: "spotify-lu.firebasestorage.app",
+  messagingSenderId: "1014361513072",
+  appId: "1:1014361513072:web:2ff78aa0a70ada5c7228b5",
+  measurementId: "G-JG466ETS5L"
+};
+
+const app = initializeApp(firebaseConfig);
+export const database = getDatabase(app);
+export { ref, onValue, set, update };
